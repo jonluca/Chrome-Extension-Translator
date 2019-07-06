@@ -18,7 +18,7 @@ chrome_langs_csv = ','.join(chrome_langs)
 @click.option('--out-lang', default=chrome_langs_csv,
               help='CSV of languages you\'d like to translate to, default to all langues:\n' + chrome_langs_csv)
 @click.option('--file', default='messages.json', help='Path to your messages.json file you want translated')
-@click.option('--remove-locale', default=True, type=bool, help='Should remove the existing locales folder')
+@click.option('--remove-locale', default=False, type=bool, help='Should remove the existing locales folder')
 def translate(in_lang, out_lang, file, remove_locale):
     translator = Translator()
     messages = json.loads(open(file).read())
@@ -70,6 +70,8 @@ def write_translations(translations, remove_locale):
         shutil.rmtree('_locales')
     os.mkdir('_locales')
     for lang in translations.keys():
+        if not translations[lang]:
+            continue
         if not os.path.isdir('_locales/' + lang):
             os.mkdir('_locales/' + lang)
         try:

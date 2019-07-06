@@ -26,7 +26,7 @@ Options:
 ## Sample
 
 ```bash
-python translator.py --in-lang=en --out-lang=en,es,it,zh_CN,fr --remove-locale=false
+python translator.py --in-lang=en --out-lang=en,es,it,zh_CN,fr --remove-locale=true
 ```
 
 ## Important Notes
