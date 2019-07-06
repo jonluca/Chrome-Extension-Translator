@@ -1,0 +1,4 @@
+click==6.7
+click-plugins==1.1.1
+googletrans==2.4.0
+pychalk==2.0.1

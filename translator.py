@@ -4,6 +4,7 @@ import os
 import shutil
 import sys
 
+import chalk
 import click
 from googletrans import Translator
 
@@ -48,8 +49,8 @@ def translate(in_lang, out_lang, file, remove_locale):
                 translations[lang][key] = {'message': trans_string.text}
             write_translations(translations, remove_locale)
         except Exception as e:
-            click.echo(f'Error translating language: {lang} - skipping')
-            print(e)
+            click.echo(chalk.red(f'Error translating language: {lang} - skipping'))
+            click.echo(e)
     click.echo("""
     Done!
     
@@ -75,7 +76,7 @@ def write_translations(translations, remove_locale):
             with codecs.open('_locales/' + lang + '/messages.json', 'w', encoding='utf-8') as outfile:
                 json.dump(translations[lang], outfile, ensure_ascii=False)
         except Exception as e:
-            print(f'Error writing {lang}: {e}')
+            print(chalk.red(f'Error writing {lang}: {e}'))
 
 
 if __name__ == '__main__':

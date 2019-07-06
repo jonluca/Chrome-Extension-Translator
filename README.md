@@ -4,6 +4,8 @@ Given a top level `messages.json`, this extension will attempt to create a `_loc
 
 ## Usage
 
+Tested only with python 3. Make sure to `pip install -r requirements.txt` first.
+
 ```text
 Usage: translator.py [OPTIONS]
 
