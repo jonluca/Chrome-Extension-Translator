@@ -68,7 +68,8 @@ def write_translations(translations, remove_locale):
     # delete locales if it already exists
     if remove_locale and os.path.isdir('_locales'):
         shutil.rmtree('_locales')
-    os.mkdir('_locales')
+    if not os.path.isdir('_locales'):
+        os.mkdir('_locales')
     for lang in translations.keys():
         if not translations[lang]:
             continue
